@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Matrix
+{
+class Program
+{
+static void Main(string[] args)
+{
+
+List<List<int» matrix1 = new List<List<int»();
+List<List<int» matrix2 = new List<List<int»();
+List<List<int» matrix3 = new List<List<int»();
+
+Console.WriteLine("Enter end number of matrix");
+int razmer = Convert.ToInt32(Console.ReadLine());
+
+Random slyh = new Random();
+for (int l = 0; l < razmer; l++)
+{
+
+var t = new List<int>();
+for (int j = 0; j < razmer; j++)
+{
+t.Add(slyh.Next(1, 100));
+}
+matrix1.Add(t);
+}
+
+for (int l = 0; l < razmer; l++)
+{
+var v = new List<int>();
+for (int j = 0; j < razmer; j++)
+{
+v.Add(slyh.Next(1, 100));
+}
+matrix2.Add(v);
+}
+
+foreach (var q in matrix1)
+Console.WriteLine(q.Aggregate("", (e, n) => e + " " + n));
+
+Console.WriteLine(Environment.NewLine);
+
+foreach (var t in matrix2)
+Console.WriteLine(t.Aggregate("", (e, n) => e + " " + n));
+
+for (int l = 0; l < razmer; l++)
+{
+List<int> q = new List<int>();
+for (int j = 0; j < razmer; j++)
+{
+q.Add(0);
+}
+matrix3.Add(q);
+}
+for (int l = 0; l < razmer; l++)
+{
+for (int j = 0; j < razmer; j++)
+{
+{
+for (int w = 0; w < razmer; w++)
+{
+matrix3[l][j] = matrix3[l][j] + (matrix1[l][w] * matrix1[w][j]);
+}
+}
+}
+}
+Console.WriteLine("Result matrix:");
+PrintValue(matrix3);
+Console.ReadKey();
+}
+private static void PrintValue(List<List<int» matrix1)
+{
+foreach (var t in matrix1)
+Console.WriteLine(t.Aggregate("", (e, n) => e + " " + n));
+Console.WriteLine(Environment.NewLine);
+
+Console.WriteLine("Push any button to continue");
+}
+}
+
+
+
+}
